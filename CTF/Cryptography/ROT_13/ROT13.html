@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ROT13 Konverter</title>
+  <style>
+  html {
+  font-family: Trebuchet;
+  width: 410px;
+  margin: 10px;
+  padding: auto;
+  }
+  .container {
+    width: 410px;
+    background: #FFFAAA;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .ta {
+    padding: 10px;
+    width: 94%;
+    resize: vertical;
+  }
+  .title {
+    margin: -5px 0 -10px 0;
+  }
+  .desc {
+    font-size: 12px;
+  }
+  .inst {
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">ROT13 Konverter</h1>
+    <p class="desc">ROT13 adalah sebuah algoritma enkripsi sederhana yang menggunakan sandi abjad-tunggal dengan pergeseran ke=13 (huruf A diganti dengan huruf N, Huruf B diganti dengan O, dan seterusnya). Enkripsi ini merupakan penggunaan dari sandi Caesar dengan geseran 13.</p>
+
+    <p class="inst">Masukkan text dokumen yang akan dienkripsi :</p>
+    <input id="upload" type="file">
+    <input type="button" value="Upload" style="float: right;" onClick="upload()">
+
+    <p class="inst">Masukkan kata/kalimat yg akan dienkripsi pada BOX yang telah disediakan :</p>
+    <textarea id="plain" class="ta" cols="55" rows="5"></textarea><br />
+    <input type="submit" value="K O N V E R S I" style="margin: 5px 0 5px 0;" onClick="ROT13(document.getElementById('plain').value)">
+    <textarea id="chipper" class="ta" cols="55" rows="5"></textarea><br />
+
+    <p class="inst">Apakah ingin menyimpan file ?</p>
+    <input id="namaFile" type="text" placeholder="Beri nama file !" size="29">
+    <input type="submit" value="Download" style="float: right;" onClick="download()">
+    <br>
+
+  <!-- <script type="text/javascript"> -->
+  <!--   function upload() { -->
+  <!--     var fileDiUpload = document.getElementById('upload').files[0]; -->
+  <!--  -->
+  <!--     var fileDiBaca = new FileReader(); -->
+  <!--  -->
+  <!--     fileDiBaca.onload = function(baca) { -->
+  <!--       var textDariFileBaca = baca.target.result; -->
+  <!--       document.getElementById('plain').value = textDariFileBaca; -->
+  <!--     } -->
+  <!--  -->
+  <!--     fileDiBaca.readAsText(fileDiUpload, "UTF&#45;8"); -->
+  <!--   } -->
+  <!--  -->
+  <!--   function download() { -->
+  <!--     var chipperText = document.getElementById('chipper').value; -->
+  <!--     var chipperFileBlob = new Blob([chipperText], {type:"text/plain"}); -->
+  <!--     var chipperFileURL = window.URL.createObjectURL(chipperFileBlob); -->
+  <!--     var namaFileDownload = document.getElementById('namaFile').value; -->
+  <!--  -->
+  <!--     var download = document.createElement('a'); -->
+  <!--     download.download = namaFileDownload; -->
+  <!--     download.innerHTML = "Download File"; -->
+  <!--     download.href = chipperFileURL; -->
+  <!--     download.style.display = "none"; -->
+  <!--     download.onclick = destroyChildElement; -->
+  <!--     document.body.appendChild(download); -->
+  <!--  -->
+  <!--     download.click(); -->
+  <!--   } -->
+  <!--  -->
+  <!--   function destroyChildElement(a) { -->
+  <!--     document.body.removeChild(a.target); -->
+  <!--   } -->
+  <!--  -->
+  <!--   function ROT13(kata) { -->
+  <!--     var ember = []; -->
+  <!--  -->
+  <!--     for (var i=0; i<=kata.length; i++) { -->
+  <!--       var trans = kata.charCodeAt(i); -->
+  <!--  -->
+  <!--       // konversi karakter A &#38;&#38; N || a &#38;&#38; n ke Decimal UTF&#45;16 -->
+  <!--       if ((trans >= 65 &#38;&#38; trans <= 77) || (trans >= 97 &#38;&#38; trans <= 109)) { -->
+  <!--         // re konversi angka ke character -->
+  <!--         ember.push(String.fromCharCode(trans+13)); -->
+  <!--       } -->
+  <!--  -->
+  <!--       // konversi karakter N &#38;&#38; Z || n &#38;&#38; z ke Decimal UTF&#45;16 -->
+  <!--       else if ((trans >= 78 &#38;&#38; trans <= 90) || (trans >= 110 &#38;&#38; trans <= 122)) { -->
+  <!--         // re konversi angka ke character -->
+  <!--         ember.push(String.fromCharCode(trans&#45;13)); -->
+  <!--       } -->
+  <!--  -->
+  <!--       // selain dari kondisi di atas -->
+  <!--       else { -->
+  <!--         ember.push(kata[i]); -->
+  <!--       } -->
+  <!--     } -->
+  <!--  -->
+  <!--     // ouput -->
+  <!--     document.getElementById('chipper').value = ember.join(''); -->
+  <!--   } -->
+  <!--  -->
+  <!-- </script> -->
+  </div>
+</body>
+</html>
